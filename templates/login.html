@@ -9,18 +9,19 @@
     <body>      
       <div class="form-wrap">
         <h2>Войдите, чтобы  начать тест</h2>
-        <form>
+        <form action="" class="form" method ="POST">
           <div>
-            <label for="name">Имя</label>
-            <input type="text" name="name" required>
+            <input type="text" name="username" placeholder="Username" value="{{request.form.username}}">
           </div>
 
           <div>
-            <label for="secondName">Фамилия</label>
-            <input type="text" name="secondName" required>
+            <input type="text" placeholder="Password" name="password" value="{{request.form.password}}">
           </div>
-          <button type="submit">Войти</button>
+          <input type="submit" value="Войти">
         </form>
+        
+        <p>{{error}}</p>
+        
       </div> 
   </body>
   </html>
