@@ -7,13 +7,28 @@ cursor = conn.cursor()
 
 app = Flask(__name__)
 
+def getUser(login, password):
+    a = "select * from users where login = '%s' and pass = '%s';" % (login, password)
+    cursor.execute(a)
+    result = cursor.fetchall()
+    if len(result) == 1:
+        return result[0]
+    else:
+        return "Try again"             
+       
+
 @app.route('/')
 def homepage():
     return render_template("main.html")
 
-@app.route('/dashboard/')
-def dashboard():
-    return render_template("dashboard.html")
+@app.route('/dashboard')
+def dashboard(name, surname):
+#    a = request.args
+#    name = a.to_dict()['name']
+#    surname = a.to_dict()['surname']
+    return render_template("dashboard.html", name = name, surname = surname)
+    
+
 
 @app.route('/login/', methods=["GET","POST"])
 def login_page():
@@ -22,17 +37,18 @@ def login_page():
         if request.method == "POST":
             attempted_username = request.form['username']
             attempted_password = request.form['password']
-            a = "select * from users where login = '%s' and pass = '%s';" % (attempted_username, attempted_password)
-            cursor.execute(a)
             
-            return render_template("login.html", error = cursor.fetchall())
+            user = getUser(attempted_username, attempted_password)
             
-           # if attempted_username == "admin" and attempted_password == "password":
-            #    return redirect(url_for('dashboard'))
-          #  else:
-          #      error = "Try Again"
-                
+            if user == "Try again":
+                error = "Try again"
+            else: 
+                return dashboard(user[1], user[2])
+            print (url_for('dashboard'))
         return render_template("login.html", error = error)
+            # return render_template("login.html", error = cursor.fetchall())
+#            return redirect(url_for('dashboard') + "?name=%s&surname=%s" % (result[1], result[2]))
+            
     
     #except Exception as e:
         
