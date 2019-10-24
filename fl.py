@@ -19,11 +19,18 @@ def getUser(login, password):
     else:
         return "Error"       
 
-def getQuestion(question):
-    q = "SELECT * FROM questions WHERE question = '%s';" % (question)
-    cursor.execute(u)
-    result = cursor.fetchall()
-    return result[0]    
+def getQuestions():
+    q = "SELECT * FROM questions;"
+    cursor.execute(q)
+    return cursor.fetchall()
+
+def getAnswers():
+    #questions = getQuestions()
+    #a = "SELECT answerText FROM answers WHERE questionID = '%s';" % (questions[0][0])
+    a = "SELECT questions.questionText, answers.answerText FROM questions JOIN answers ON questions.questionID=answers.questionID;"
+    cursor.execute(a)
+    return cursor.fetchall()
+        
        
 
 @app.route('/')
@@ -32,10 +39,10 @@ def homepage():
 
 @app.route('/dashboard')
 def dashboard(name, surname):
-#    a = request.args
-#    name = a.to_dict()['name']
-#    surname = a.to_dict()['surname']
-    return render_template("dashboard.html", name = name, surname = surname)
+    questions = getQuestions()
+    answers = getAnswers()
+
+    return render_template("dashboard.html", name = name, surname = surname, questions = questions, answers = answers)
     
 
 
@@ -56,7 +63,7 @@ def login_page():
             print (url_for('dashboard'))
         return render_template("login.html", error = error)
             # return render_template("login.html", error = cursor.fetchall())
-#            return redirect(url_for('dashboard') + "?name=%s&surname=%s" % (result[1], result[2]))
+            # return redirect(url_for('dashboard') + "?name=%s&surname=%s" % (result[1], result[2]))
             
     
     #except Exception as e:

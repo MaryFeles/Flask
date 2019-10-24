@@ -12,20 +12,26 @@
         </div> 
         <div class="sidebar">
           <span class="user-name">Hi, {{name}} {{surname}}</span>
-        </div>
+        </div>        
         <div class="content">
-          <div class="quiz-card">
-            <div class="quiz-card__title">Вопрос:</div>
-            <div class="quiz-card__question">gfsggdfgdsg sgsgs raefdsfsg gggg sfg wg rg sg sf s garrgrg g </div>
-            <div class="quiz-card__title">Варианты ответа:</div>
-            <ol class="quiz-card__answers-list">
-              <li class="quiz-card__answers">efesfdefe </li>
-              <li class="quiz-card__answers">gsg gsgf g</li>
-              <li class="quiz-card__answers">sggs s sfgh s</li>
-              <li class="quiz-card__answers">gsdf dag gfssg sg</li>
-            </ol>
 
+          {% for i in questions %}          
+          <div class="quiz-card">
+            <!-- <div class="quiz-card__title">Вопрос:</div> -->
+            <div class="quiz-card__question">
+              {{ i[1] }} <!-- первый элемент в i-том кортеже -->
+            </div>
+            <!-- <div class="quiz-card__title">Варианты ответа:</div> -->
+            <ol class="quiz-card__answers-list">
+              {% for j in answers %}
+                {% if (j[0] == i[1]) %}
+                <li class="quiz-card__answers">{{ j[1] }}</li>
+                {% endif %}
+              {% endfor %}
+            </ol>
           </div>
+          {% endfor %}
+
         </div>
         <div class="footer"></div>
     </body>

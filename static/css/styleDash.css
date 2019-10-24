@@ -16,7 +16,7 @@ body{
 .sidebar {
     float: left; /* Обтекание справа */
    /* border: 1px solid #333; /* Рамка левого меню */
-    width: 20%; /* Ширина левой колонки */
+    width: 15%; /* Ширина левой колонки */
     padding: 10px; /* Поля внутри блока */
     margin: 10px 10px 20px 5px; /* Значения отступа от блока */
     min-height: 500px;
@@ -24,7 +24,7 @@ body{
 
 }
 .content {
-    margin: 10px 5px 20px 25%; /* Значения отступа от левого блока */
+    margin: 10px 5px 20px 20%; /* Значения отступа от левого блока */
     padding: 5px; /* Поля внутри блока */
     /*border: 1px solid #333; /* Рамка контента */
     min-height: 510px;
@@ -53,6 +53,9 @@ body{
 .quiz-card__question {
     line-height: 1.25rem;
     margin-left: 15px;
+    margin-top: 20px;
+    font-size: 16pt;
+    font-weight: bold;
 }
 
 .quiz-card__answers-list {
