@@ -3,11 +3,11 @@
     <head>
       <meta charset="utf-8" />
       <title>Hello from Flask</title>
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> 
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleLogin.css') }}"> 
       <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
     </head>
     <body>      
-      <div class="form-wrap">
+      <div align="center" class="form-wrap" id="centerLayer">
         <h2>Войдите, чтобы  начать тест</h2>
         <form action="" class="form" method ="POST">
           <div>
@@ -17,7 +17,8 @@
           <div>
             <input type="text" placeholder="Password" name="password" value="{{request.form.password}}">
           </div>
-          <input type="submit" value="Войти">
+          
+          <input class = "button" type="submit" value="Войти" >
         </form>
         
         <p>{{error}}</p>

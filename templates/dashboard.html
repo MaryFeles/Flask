@@ -3,11 +3,30 @@
     <head>
       <meta charset="utf-8" />
       <title>Hello from Flask</title>
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> 
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleDash.css') }}"> 
       <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
     </head>
-    <body>
-      <h1>Hi, {{name}} {{surname}}<h1>
-      <div></div>
+    <body>           
+        <div class="header">
+          Тест по теме "Информационные системы и технологии"
+        </div> 
+        <div class="sidebar">
+          <span class="user-name">Hi, {{name}} {{surname}}</span>
+        </div>
+        <div class="content">
+          <div class="quiz-card">
+            <div class="quiz-card__title">Вопрос:</div>
+            <div class="quiz-card__question">gfsggdfgdsg sgsgs raefdsfsg gggg sfg wg rg sg sf s garrgrg g </div>
+            <div class="quiz-card__title">Варианты ответа:</div>
+            <ol class="quiz-card__answers-list">
+              <li class="quiz-card__answers">efesfdefe </li>
+              <li class="quiz-card__answers">gsg gsgf g</li>
+              <li class="quiz-card__answers">sggs s sfgh s</li>
+              <li class="quiz-card__answers">gsdf dag gfssg sg</li>
+            </ol>
+
+          </div>
+        </div>
+        <div class="footer"></div>
     </body>
   </html>

@@ -1,0 +1,79 @@
+body{
+    font-family: 'Jura', sans-serif;
+    margin: 20; /* Отступы на странице */
+}
+
+.userName{
+	
+}
+
+.header {
+	padding: 20px;
+	font-size: 25pt;
+    background: #fff; /* Цвет фона шапки */
+    padding: 10px; /* Поля вокруг текста */
+}
+.sidebar {
+    float: left; /* Обтекание справа */
+   /* border: 1px solid #333; /* Рамка левого меню */
+    width: 20%; /* Ширина левой колонки */
+    padding: 10px; /* Поля внутри блока */
+    margin: 10px 10px 20px 5px; /* Значения отступа от блока */
+    min-height: 500px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.15);
+
+}
+.content {
+    margin: 10px 5px 20px 25%; /* Значения отступа от левого блока */
+    padding: 5px; /* Поля внутри блока */
+    /*border: 1px solid #333; /* Рамка контента */
+    min-height: 510px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.15);
+ 
+}
+.footer {
+    background: #333; /* Цвет фона подвала */
+    padding: 5px; /* Поля внутри блока */
+    color: #fff; /* Цвет текста футера */
+    clear: left; /* Отменяем действие float */
+    height: 20px;
+
+}
+.quiz-card{
+	border-bottom: 1px solid #333;
+
+}
+
+.quiz-card__title{
+	margin: 15px;
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+.quiz-card__question {
+    line-height: 1.25rem;
+    margin-left: 15px;
+}
+
+.quiz-card__answers-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    list-style-type: lower-alpha;
+    list-style-position: inside;
+}
+
+.quiz-card__answers {
+    display: list-item;
+    padding: 8px 15px;
+   /* transition: .1s;*/
+   /* transform: translateX(-5px); /*Сдвигает элемент относительно его обычного положения по оси X.*/
+
+}
+
+.quiz-card__answers:hover{	
+	background: #333; 
+    color: #ffe; 
+    margin-right: 0px;
+
+}

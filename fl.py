@@ -2,19 +2,28 @@ from flask import render_template, request, url_for, redirect
 from flask import Flask
 import sqlite3
 
+# Устанавливаем соединение с БД
 conn = sqlite3.connect("test.db", check_same_thread=False)
+
+# Создаем курсор -- это специальный объект, который делает запросы и получает их результаты
 cursor = conn.cursor()
 
 app = Flask(__name__)
 
 def getUser(login, password):
-    a = "select * from users where login = '%s' and pass = '%s';" % (login, password)
-    cursor.execute(a)
+    u = "SELECT * FROM users WHERE login = '%s' and pass = '%s';" % (login, password)
+    cursor.execute(u)
     result = cursor.fetchall()
     if len(result) == 1:
         return result[0]
     else:
-        return "Try again"             
+        return "Error"       
+
+def getQuestion(question):
+    q = "SELECT * FROM questions WHERE question = '%s';" % (question)
+    cursor.execute(u)
+    result = cursor.fetchall()
+    return result[0]    
        
 
 @app.route('/')
@@ -40,10 +49,10 @@ def login_page():
             
             user = getUser(attempted_username, attempted_password)
             
-            if user == "Try again":
-                error = "Try again"
+            if user == "Error":
+                error = "Неправильный логин или пароль"
             else: 
-                return dashboard(user[1], user[2])
+                return dashboard(user[1], user[2]) # Здесь: 1 - firstname, 2 - lastname
             print (url_for('dashboard'))
         return render_template("login.html", error = error)
             # return render_template("login.html", error = cursor.fetchall())
@@ -53,7 +62,12 @@ def login_page():
     #except Exception as e:
         
       #  return render_template("login.html", error = e)
-            
+
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.run()
+
+# Закрываем соединение с БД    
+conn.close()

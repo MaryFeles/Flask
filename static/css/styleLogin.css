@@ -1,0 +1,35 @@
+h2{
+	color: #333;
+}
+body{
+    font-family: 'Jura', sans-serif;
+}
+
+#centerLayer {
+    position: absolute; /* Абсолютное позиционирование */
+    width: 400px; /* Ширина слоя в пикселах */
+    height: 250px; /* Высота слоя в пикселах */
+    left: 50%; /* Положение слоя от левого края */
+    top: 50%; /* Положение слоя от верхнего края */
+    margin-left: -210px; /* Отступ слева */
+    margin-top: -150px;	/* Отступ сверху */
+    background: #fff; /* Цвет фона */
+    /*border: solid 1px #666;  Параметры рамки вокруг */
+    padding: 10px; /* Поля вокруг текста */
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.15);
+   }
+
+   .button{
+   	width: 314px;
+    height: 30px;
+    font-family: 'Jura', sans-serif;
+    font-size: 14pt;
+    padding: 0;
+}
+
+input {
+	width: 300px;
+	height: 20px;
+	margin-top: 10px;
+	padding-left: 10px;
+}
