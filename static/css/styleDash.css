@@ -58,25 +58,95 @@ body{
     font-weight: bold;
 }
 
-.quiz-card__answers-list {
+/*.quiz-card__answers-list {
     padding: 0;
     display: flex;
     flex-direction: column;
     list-style-type: lower-alpha;
     list-style-position: inside;
-}
+}*/
 
-.quiz-card__answers {
+/* .quiz-card__answers {
     display: list-item;
     padding: 8px 15px;
-   /* transition: .1s;*/
-   /* transform: translateX(-5px); /*Сдвигает элемент относительно его обычного положения по оси X.*/
+   transition: .1s;
+   transform: translateX(-5px); Сдвигает элемент относительно его обычного положения по оси X.
 
-}
+} */
 
-.quiz-card__answers:hover{	
-	background: #333; 
+/* .quiz-card__answers:hover{    
+    background: #333; 
     color: #ffe; 
     margin-right: 0px;
 
 }
+ */
+
+
+ol {
+   list-style-type: none;
+   position: relative;
+   padding: 0;
+   margin: 15px;
+}
+ol li {
+   width: 100%;
+   display: block;
+   position: relative;
+}
+ol li input[type=radio] {
+   position: absolute;
+   visibility: hidden;
+}
+ol li label {
+   display: block;
+   position: relative;
+   padding: 0.2em 2em;
+   font-size: 14pt;
+   cursor:pointer;
+   z-index: 5;
+   /*transition: all .25s linear;*/
+}
+ol li:hover label {
+   color: #649;
+   font-weight: 600;
+
+}
+ol li .check {
+   display: block;
+   position: absolute;
+   border: 2px solid #ccc;
+   border-radius: 100%;
+   height: 18px;
+   width: 18px;
+   top: calc(50% - 11px);
+   z-index: 5;
+   /*transition: border .25s linear;*/
+   cursor:pointer;
+}
+ol li:hover .check {
+   border: 2px solid #555;
+}
+ol li .check::before {
+   content: '';
+   display: block;
+   position: absolute;
+   border-radius: 100%;
+   height: 12px;
+   width: 12px;
+   top: calc(50% - 6px);
+   left: calc(50% - 6px);
+   margin: auto;
+   transition: background .25s linear;
+}
+input[type=radio]:checked ~ .check {
+   border: 2px solid #333;
+}
+input[type=radio]:checked ~ .check::before {
+   background: #649;
+}
+input[type=radio]:checked ~ label {
+   color: #649;
+   font-weight: 600;
+}
+
