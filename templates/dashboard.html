@@ -14,35 +14,16 @@
           <span class="user-name">Hi, {{name}} {{surname}}</span>
         </div>        
         <div class="content">
-
-          <!-- {% for i in questions %}          
-          <div class="quiz-card">
-            <div class="quiz-card__title">Вопрос:</div>
-            <div class="quiz-card__question">
-              {{ i[1] }} первый элемент в i-том кортеже
-            </div>
-            <div class="quiz-card__title">Варианты ответа:</div>
-            <ol class="quiz-card__answers-list">
-              {% for j in answers %}
-                {% if (j[0] == i[1]) %}
-                <li class="quiz-card__answers">{{ j[1] }}</li>
-                {% endif %}
-              {% endfor %}
-            </ol>
-          </div>
-          {% endfor %} -->
-
-
           {% for i in questions %}
           <div class="quiz-card">
             <div class="quiz-card__question">{{ i[1] }}             
             </div>
               <ol class="quiz-card__answers-list">
                 {% for j in answers %}
-                {% if (j[0] == i[1]) %}
+                {% if (j[3] == i[0]) %}
                 <li class="quiz-card__answers">
-                  <input type="radio" id="answers-i" name="selector">
-                  <label for="answers-i">{{ j[1] }}</label>
+                  <input type="radio" id="ans_{{i[0]}}" value="{{j[0]}}" name="ans_{{i[0]}}">
+                  <label for="ans_{{i[0]}}">{{ j[1] }}</label>
                   <div class="check"></div>
                 </li>
                 {% endif %}

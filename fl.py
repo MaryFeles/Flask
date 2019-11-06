@@ -27,7 +27,7 @@ def getQuestions():
 def getAnswers():
     #questions = getQuestions()
     #a = "SELECT answerText FROM answers WHERE questionID = '%s';" % (questions[0][0])
-    a = "SELECT questions.questionText, answers.answerText FROM questions JOIN answers ON questions.questionID=answers.questionID;"
+    a = "SELECT * FROM answers;"
     cursor.execute(a)
     return cursor.fetchall()
         
