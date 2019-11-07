@@ -13,24 +13,29 @@
         <div class="sidebar">
           <span class="user-name">Hi, {{name}} {{surname}}</span>
         </div>        
+
         <div class="content">
-          {% for i in questions %}
-          <div class="quiz-card">
-            <div class="quiz-card__question">{{ i[1] }}             
+          <form action="" name="form" method ="GET">
+            {% for i in questions %}
+            <div class="quiz-card">
+              <div class="quiz-card__question">{{ i[1] }}             
             </div>
-              <ol class="quiz-card__answers-list">
-                {% for j in answers %}
-                {% if (j[3] == i[0]) %}
-                <li class="quiz-card__answers">
-                  <input type="radio" id="ans_{{i[0]}}" value="{{j[0]}}" name="ans_{{i[0]}}">
-                  <label for="ans_{{i[0]}}">{{ j[1] }}</label>
-                  <div class="check"></div>
-                </li>
-                {% endif %}
-                {% endfor %}
+            <ol class="quiz-card__answers-list">
+              {% for j in answers %}
+              {% if (j[3] == i[0]) %}
+              <li class="quiz-card__answers">
+                <input type="radio" id="ans_{{j[0]}}" value="{{j[0]}}" name="answer-list-{{i[0]}}">
+                <label for="ans_{{j[0]}}">{{ j[1] }}</label>
+                <div class="check"></div>
+              </li>
+              {% endif %}
+              {% endfor %}
             </ol>
-          </div>
-          {% endfor %}
+            </div>
+            {% endfor %}
+            <input class = "button" type="submit" name="submit" value="Отправить" >
+            <div>Правильных ответов: i</div>
+          </form>
         </div>
         <div class="footer"></div>
     </body>

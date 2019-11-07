@@ -37,10 +37,10 @@ def getAnswers():
 def homepage():
     return render_template("main.html")
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=["GET","POST"])
 def dashboard(name, surname):
     questions = getQuestions()
-    answers = getAnswers()
+    answers = getAnswers()    
 
     return render_template("dashboard.html", name = name, surname = surname, questions = questions, answers = answers)
     
@@ -53,7 +53,6 @@ def login_page():
         if request.method == "POST":
             attempted_username = request.form['username']
             attempted_password = request.form['password']
-            
             user = getUser(attempted_username, attempted_password)
             
             if user == "Error":

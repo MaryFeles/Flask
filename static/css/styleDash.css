@@ -100,18 +100,18 @@ ol li input[type=radio] {
 }
 ol li label {
    display: block;
-   position: relative;
+   position: relative; 
    padding: 0.2em 2em;
-   font-size: 14pt;
-   cursor:pointer;
+   font-size: 14pt;   cursor:pointer;
    z-index: 5;
-   /*transition: all .25s linear;*/
+   transition: all .25s linear;
 }
 ol li:hover label {
    color: #649;
    font-weight: 600;
 
 }
+
 ol li .check {
    display: block;
    position: absolute;
@@ -121,7 +121,7 @@ ol li .check {
    width: 18px;
    top: calc(50% - 11px);
    z-index: 5;
-   /*transition: border .25s linear;*/
+   transition: border .25s linear;
    cursor:pointer;
 }
 ol li:hover .check {
@@ -149,4 +149,5 @@ input[type=radio]:checked ~ label {
    color: #649;
    font-weight: 600;
 }
+
 
