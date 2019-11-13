@@ -15,7 +15,7 @@
         </div>        
 
         <div class="content">
-          <form action="" name="form" method ="GET">
+          <form action="" name="form" method ="POST">
             {% for i in questions %}
             <div class="quiz-card">
               <div class="quiz-card__question">{{ i[1] }}             
@@ -25,6 +25,7 @@
               {% if (j[3] == i[0]) %}
               <li class="quiz-card__answers">
                 <input type="radio" id="ans_{{j[0]}}" value="{{j[0]}}" name="answer-list-{{i[0]}}">
+                
                 <label for="ans_{{j[0]}}">{{ j[1] }}</label>
                 <div class="check"></div>
               </li>
@@ -33,7 +34,7 @@
             </ol>
             </div>
             {% endfor %}
-            <input class = "button" type="submit" name="submit" value="Отправить" >
+            <input class = "button" type="submit" value="Отправить" >
             <div>Правильных ответов: i</div>
           </form>
         </div>

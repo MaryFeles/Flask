@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, session, escape
 from flask import Flask
 import sqlite3
 
@@ -9,6 +9,7 @@ conn = sqlite3.connect("test.db", check_same_thread=False)
 cursor = conn.cursor()
 
 app = Flask(__name__)
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 def getUser(login, password):
     u = "SELECT * FROM users WHERE login = '%s' and pass = '%s';" % (login, password)
@@ -38,11 +39,17 @@ def homepage():
     return render_template("main.html")
 
 @app.route('/dashboard', methods=["GET","POST"])
-def dashboard(name, surname):
-    questions = getQuestions()
-    answers = getAnswers()    
-
-    return render_template("dashboard.html", name = name, surname = surname, questions = questions, answers = answers)
+def dashboard():
+    if 'username' in session:
+        questions = getQuestions()
+        answers = getAnswers()
+        print (session)
+        if request.method == "POST":
+            print (session)
+        return render_template("dashboard.html", name = name, surname = surname, questions = questions, answers = answers)
+    
+#@app.route('/result', methods=["GET","POST"])
+##def result():
     
 
 
@@ -51,6 +58,8 @@ def login_page():
         error = ''
     #try:
         if request.method == "POST":
+            session['username'] = request.form['username']
+            session['password'] = request.form['password']
             attempted_username = request.form['username']
             attempted_password = request.form['password']
             user = getUser(attempted_username, attempted_password)
@@ -58,8 +67,10 @@ def login_page():
             if user == "Error":
                 error = "Неправильный логин или пароль"
             else: 
-                return dashboard(user[1], user[2]) # Здесь: 1 - firstname, 2 - lastname
-            print (url_for('dashboard'))
+                return redirect(url_for('dashboard'))
+
+                #return dashboard(user[1], user[2]) # Здесь: 1 - firstname, 2 - lastname
+            
         return render_template("login.html", error = error)
             # return render_template("login.html", error = cursor.fetchall())
             # return redirect(url_for('dashboard') + "?name=%s&surname=%s" % (result[1], result[2]))
