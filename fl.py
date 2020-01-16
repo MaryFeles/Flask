@@ -43,14 +43,20 @@ def dashboard():
     if 'username' in session:
         questions = getQuestions()
         answers = getAnswers()
-        print (session)
+        login = session.get('username')
+        password = session.get('password')
+        user = getUser(login, password)
+        name = user[1]
+        surname = user[2]
+        print (session['username'])
         if request.method == "POST":
             print (session)
+           # ans = request.form['answer-list-1']
+            print (ans)
         return render_template("dashboard.html", name = name, surname = surname, questions = questions, answers = answers)
     
 #@app.route('/result', methods=["GET","POST"])
-##def result():
-    
+##def result(): 
 
 
 @app.route('/login/', methods=["GET","POST"])
@@ -80,7 +86,10 @@ def login_page():
         
       #  return render_template("login.html", error = e)
 
-
+@app.route('/logout')
+def logout():
+	session.pop('username', None)
+	return redirect(url_for('login_page'))
 
 if __name__ == '__main__':
 	app.debug = True
