@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 from flask import render_template, request, url_for, redirect, session, escape
 from flask import Flask
 import sqlite3
@@ -48,11 +50,17 @@ def dashboard():
         user = getUser(login, password)
         name = user[1]
         surname = user[2]
-        print (session['username'])
-        if request.method == "POST":
-            print (session)
-           # ans = request.form['answer-list-1']
-            print (ans)
+        #print (session['username'])
+        #if request.method == "POST":
+         #   print (session)
+        #print (answers)
+        #ans_form = request.form.copy()
+        #print(ans_form)
+        for i in questions:
+            for j in request.form:
+                if i[0] == int(j[0]):
+                    print(int(request.form.getlist(j[0])[0]))
+        print(request.form)
         return render_template("dashboard.html", name = name, surname = surname, questions = questions, answers = answers)
     
 #@app.route('/result', methods=["GET","POST"])

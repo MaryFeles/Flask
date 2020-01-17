@@ -24,7 +24,7 @@
               {% for j in answers %}
               {% if (j[3] == i[0]) %}
               <li class="quiz-card__answers">
-                <input type="radio" id="ans_{{j[0]}}" value="{{j[0]}}" name="answer-list-{{i[0]}}">
+                <input type="radio" id="ans_{{j[0]}}" value="{{j[0]}}" name="{{i[0]}}">
                 
                 <label for="ans_{{j[0]}}">{{ j[1] }}</label>
                 <div class="check"></div>
